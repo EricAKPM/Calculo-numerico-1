@@ -5,6 +5,7 @@ x0=float(input('DIGITE x0: '))
 precisao=float(input('DIGITE A PRECISAO: '))
 iteracao=int(input('DIGITE A QUANTIDADE DE INTERACOES: '))
 k=0
+
 def calcularfx(valor):
     #return pow(valor,3)+pow(valor,2)-valor#RAIZ:0 e 0.6... [0,0.3] e [0.4,0.8]
     return (valor*log10(valor)-1).real #RAIZ:2.5... [2,3]
@@ -18,11 +19,12 @@ def calcularfxlinha(valor):
     #return 6*valor
 
 fx=(float)(calcularfx(x0).real)
+# precisao suficiente?
 if abs(fx) > precisao:
     fxlinha=(float)(calcularfxlinha(x0))
     x1=x0-((float)(calcularfx(x0))/fxlinha)
     fx=(float)(calcularfx(x1))
-    CPFX=0
+    k+=1
     while (abs(fx) > precisao and abs(x1-x0) > precisao and k <= iteracao):
         k+=1
         x0=x1
